@@ -10,11 +10,12 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const activeColor = Colors[colorScheme ?? 'light'].primary;
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: activeColor,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -34,10 +35,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="record"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Record',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="mic.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="review"
+        options={{
+          title: 'Review',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="calendar" color={color} />,
         }}
       />
     </Tabs>
